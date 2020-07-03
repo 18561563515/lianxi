@@ -1,28 +1,77 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view ></router-view>
+    <navbar>
+      <navbaritem v-for="(i,index) in arr" :key="index" :icon="i.icon" :txt="i.txt" :active="i.active"  :key1="index" ></navbaritem>
+    </navbar>
+<!--    <div class="box1"></div>-->
+    <router-link to="/home" >HelloWorld</router-link>
+    <router-link to="/haha" >box</router-link>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import navbar from '@/components/navbar/navbar.vue'
+  import navbaritem from "@/components/navbar/navbaritem";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {
+      navbar,
+      navbaritem
+    },
+    data() {
+      return {
+        arr: [
+          {
+            icon: 'el-icon-s-home',
+            txt: '首页',
+            active:true
+          },
+          {
+            icon: 'el-icon-s-check',
+            txt: '用户',
+            active:false
+          },
+          {
+            icon: 'el-icon-s-opportunity',
+            txt: '查询',
+            active:false
+          },
+          {
+            icon: 'el-icon-s-promotion',
+            txt: '社交',
+            active:false
+          }
+        ]
+      }
+    },
+    mounted(){
+      this.$on('ceshi1',this.fn)
+    },
+    methods:{
+      fn(v) {
+        console.log(v)
+        for (let argument of this.arr) {
+          argument.active = false
+        }
+        this.arr[v].active = true
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import url('static/css/comment.css');
+
+  #app {
+    width: 900px;
+    margin: 0 auto;
+    background: azure;
+  }
+  .box1{
+    width: 20px;
+    height: 40px;
+    background: #2c3e50;
+  }
 </style>
