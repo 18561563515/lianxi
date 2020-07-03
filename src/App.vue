@@ -2,11 +2,11 @@
   <div id="app">
     <router-view ></router-view>
     <navbar>
-      <navbaritem v-for="(i,index) in arr" :key="index" :icon="i.icon" :txt="i.txt" :active="i.active"  :key1="index" ></navbaritem>
+      <navbaritem v-for="(i,index) in arr" :key="index" :icon="i.icon" :txt="i.txt" :active="i.active"  :key1="index" :path="i.path"></navbaritem>
     </navbar>
 <!--    <div class="box1"></div>-->
-    <router-link to="/home" >HelloWorld</router-link>
-    <router-link to="/haha" >box</router-link>
+<!--    <router-link to="/home" >HelloWorld</router-link>-->
+<!--    <router-link to="/haha" >box</router-link>-->
   </div>
 </template>
 
@@ -26,22 +26,26 @@
           {
             icon: 'el-icon-s-home',
             txt: '首页',
-            active:true
+            active:true,
+            path:'/home'
           },
           {
             icon: 'el-icon-s-check',
             txt: '用户',
-            active:false
+            active:false,
+            path:'/cart'
           },
           {
             icon: 'el-icon-s-opportunity',
             txt: '查询',
-            active:false
+            active:false,
+            path:'/profile'
           },
           {
             icon: 'el-icon-s-promotion',
             txt: '社交',
-            active:false
+            active:false,
+            path:'/map'
           }
         ]
       }

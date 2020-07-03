@@ -23,16 +23,27 @@
       },
       key1:{
         type:Number
+      },
+      path:{
+        type:String
       }
     },
     data() {
       return {
+
       }
     },
     methods:{
       dianwole(){
         // console.log(this.key1)
         this.$parent.$emit('ceshi',this.key1)
+        this.$router.push({
+          path:this.path,
+          query:{
+            name:'kwan'
+          }
+
+        })
       }
     }
   }
